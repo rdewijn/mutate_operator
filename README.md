@@ -1,28 +1,25 @@
-# Template Shiny operator for Tercen
+# Transform Operator
 
 ##### Description
 
-The `Template Shiny operator` is a template repository for the creation of Shiny operators in Tercen.
+The `Transform Operator` can be used to apply a transformation or mutation to input data using a simple R expression.
 
 ##### Usage
 
 Input projection|.
 ---|---
-`x-axis`        | type, description 
-`y-axis`        | type, description 
-`row`           | type, description 
-`column`        | type, description 
-`colors`        | type, description 
-`labels`        | type, description 
+`y-axis`        | input values
+`row`           | row factors
+`column`        | columns factors
+
 
 Output relations|.
 ---|---
 `Operator view`        | view of the Shiny application
+`result`  | transformed values
 
 ##### Details
 
-Details on the computation.
+Define the R expression in the shiny view. The R-expression is applied as a summary function to each cell in the cross tab view. Hence, the expression should only return a single value per cell.
 
-##### See Also
 
-[template_R_operator](https://github.com/tercen/template_R_operator)

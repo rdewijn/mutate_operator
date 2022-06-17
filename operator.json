@@ -1,7 +1,7 @@
 {
-  "name": "Template Shiny Operator",
-  "description": "Template to create a Shiny operator in Tercen.",
-  "tags": ["template"],
-  "authors": ["tercen"],
-  "urls": ["https://github.com/tercen/template-shiny-operator"]
+  "name": "Transform Operator",
+  "description": "Operator to apply a mutation or transformation to a Tercen cross tab view by applying a simple R expression",
+  "tags": ["math", "advanced"],
+  "authors": ["Rik de Wijn"],
+  "urls": 
 }
