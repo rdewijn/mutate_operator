@@ -10,7 +10,7 @@ ui <- shinyUI(fluidPage(
   
 
   mainPanel(
-    textInput("expr", "Enter your transformation expression",value = "function(y) mean(x)"),
+    textInput("expr", "Enter your transformation expression",value = "function(y) mean(y)"),
     actionButton("done", "Transform data"),
     fluidRow(
       column(6, tableOutput("input.data")),
