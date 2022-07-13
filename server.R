@@ -77,7 +77,6 @@ server <- shinyServer(function(input, output, session) {
           as.data.frame() %>%
           ctx$addNamespace() %>%
           ctx$save()
-        
         msgReactive$msg = "Done"
         
       }, error = function(e) {

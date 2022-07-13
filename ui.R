@@ -12,13 +12,11 @@ ui <- shinyUI(fluidPage(
   mainPanel(
     textInput("expr", "Enter your transformation expression",value = "function(y) mean(y)"),
     actionButton("done", "Transform data", disabled = TRUE),
+    h3(textOutput("mode")),
+    h5(textOutput("msg")),
     fluidRow(
       column(6, tableOutput("input.data")),
-      column(6, tableOutput("result")),
-      h3(textOutput("mode")),
-      h5(textOutput("msg"))
+      column(6, tableOutput("result"))
     )
-    
   )
-  
 ))
