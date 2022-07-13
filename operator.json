@@ -2,5 +2,7 @@
   "name": "Transform Operator",
   "description": "Operator to apply a mutation or transformation to a Tercen cross tab view by applying a simple R expression",
   "tags": ["math", "advanced"],
-  "authors": ["Rik de Wijn"]
+  "authors": ["Rik de Wijn"],
+  "urls": ["https://github.com/pamgene/transform_operator"],
+  "isViewOnly": false
 }

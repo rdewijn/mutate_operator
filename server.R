@@ -28,8 +28,9 @@ server <- shinyServer(function(input, output, session) {
     getMode(session)
   })
   
+  msgReactive = reactiveValues(msg = "")
+  
   observe({
-    
     resultTable = reactive({
       fn = parse(text = input$expr) %>%
         eval()
@@ -45,19 +46,44 @@ server <- shinyServer(function(input, output, session) {
         shinyjs::enable("done")
       }
       dataInput() %>%
-        select(.ri, .ci, .y)
+        select(.ri, .ci, .y) %>%
+        arrange(.ri, .ci)
     })
     output$result = renderTable({
-      resultTable()
+      resultTable() %>%
+        arrange(.ri, .ci)
+    })
+    
+    output$mode = renderText({
+      mode()
+    })
+    
+    output$msg = renderText({
+      msgReactive$msg
     })
     
     observeEvent(input$done, {
       shinyjs::disable("done")
+      
       ctx  <- getCtx(session)
-      resultTable() %>%
+        resultTable() %>%
         as.data.frame() %>%
         ctx$addNamespace() %>%
         ctx$save()
+      
+      tryCatch({
+        ctx  <- getCtx(session)
+        resultTable() %>%
+          as.data.frame() %>%
+          ctx$addNamespace() %>%
+          ctx$save()
+        
+        msgReactive$msg = "Done"
+        
+      }, error = function(e) {
+        msgReactive$msg = paste0("Failed : ", toString(e))
+        print(paste0("Failed : ", toString(e)))
+      })
     })
   })
 })
