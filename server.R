@@ -65,12 +65,6 @@ server <- shinyServer(function(input, output, session) {
     observeEvent(input$done, {
       shinyjs::disable("done")
       
-      ctx  <- getCtx(session)
-        resultTable() %>%
-        as.data.frame() %>%
-        ctx$addNamespace() %>%
-        ctx$save()
-      
       tryCatch({
         ctx  <- getCtx(session)
         resultTable() %>%
